@@ -1,45 +1,47 @@
+#!/bin/bash
 if [ "${EUID}" -ne 0 ]; then
-echo "You need to run this script as root"
-exit 1
+		echo "You need to run this script as root"
+		exit 1
+fi
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+		echo "OpenVZ is not supported"
+		exit 1
 fi
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-echo "Checking VPS"
-IZIN=$( curl http://ipinfo.io/ip | grep $MYIP )
+IZIN=$( curl http://reedem.axlinesid.com:81/BskaoahdmsoahamoaJNlapabsmal | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
-echo -e "${green}Permintaan Diterima...${NC}"
+echo -e "${green}Permission Accepted...${NC}"
 else
-echo -e "${red}Permintaan Ditolak!${NC}";
-echo "Hanya untuk pengguna terdaftar"
+echo -e "${red}Permission Denied!${NC}";
+echo "Please Contact Admin"
+echo "Telegram t.me/horasss"
+echo "WhatsApp wa.me/6282381643124"
+rm -f setup.sh
+exit 0
 fi
-mkdir /etc/v2ray
-mkdir /var/lib/crot-script;
-clear
-echo "Masukkan Domain Anda, Jika Anda Tidak Memiliki Domain Klik Enter"
-echo "Ketikkan Perintah addhost setelah proses instalasi Script Selesai"
-read -p "Hostname / Domain: " host
-echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
-echo "$host" >> /etc/v2ray/domain
+if [ -f "/etc/v2ray/domain" ]; then
+echo "Script Already Installed"
 exit 0
 fi
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
-wget https://github.com/doraemon99-x/autoscript/main/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://reedem.axlinesid.com/cf.sh && chmod +x cf.sh && ./cf.sh
 #install ssh ovpn
-wget https://github.com/doraemon99-x/autoscript/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://github.com/doraemon99-x/autoscript/main/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
+wget https://reedem.axlinesid.com/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://reedem.axlinesid.com/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
 #install ssr
-wget https://github.com/doraemon99-x/autoscript/main/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-wget https://github.com/doraemon99-x/autoscript/main/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
+wget https://reedem.axlinesid.com/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
+wget https://reedem.axlinesid.com/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
 #installwg
-wget https://github.com/doraemon99-x/autoscript/main/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
+wget https://reedem.axlinesid.com/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
 #install v2ray
-wget https://github.com/doraemon99-x/autoscript/main/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
+wget http://prem.vpnstores.net/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
 #install L2TP
-wget https://github.com/doraemon99-x/autoscript/main/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
-wget https://github.com/doraemon99-x/autoscript/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://reedem.axlinesid.com/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget https://reedem.axlinesid.com/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 rm -f /root/ssh-vpn.sh
 rm -f /root/sstp.sh
@@ -64,7 +66,7 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl enable autosett
-wget -O /etc/set.sh "https://linkkalian/set.sh"
+wget -O /etc/set.sh "https://reedem.axlinesid.com/set.sh"
 chmod +x /etc/set.sh
 history -c
 echo "1.2" > /home/ver
