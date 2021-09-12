@@ -13,7 +13,7 @@ echo "Only For Premium Users"
 exit 0
 fi
 apt install jq curl -y
-DOMAIN=domain kalian
+DOMAIN=doragcp.axlinesid.online
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 SUB_DOMAIN=${sub}.domain kalian
 CF_ID=emailkalian@gmail.com
