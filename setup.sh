@@ -11,7 +11,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-IZIN=$( curl http://link kalian:81/BskaoahdmsoahamoaJNlapabsmal | grep $MYIP )
+IZIN=$( curl http://ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $IZIN ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
@@ -28,20 +28,20 @@ exit 0
 fi
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
-wget https://linkkalian/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://github.com/doraemon99-x/autoscript/cf.sh && chmod +x cf.sh && ./cf.sh
 #install ssh ovpn
-wget https://linkkalian/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://linkkalian/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
+wget https://github.com/doraemon99-x/autoscript/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://github.com/doraemon99-x/autoscript/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
 #install ssr
-wget https://linkkalian/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-wget https://linkkalian/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
+wget https://github.com/doraemon99-x/autoscript/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
+wget https://github.com/doraemon99-x/autoscript/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
 #installwg
-wget https://linkkalian/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
+wget https://github.com/doraemon99-x/autoscript/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
 #install v2ray
-wget http://prem.vpnstores.net/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
+wget https://github.com/doraemon99-x/autoscript/ins-vt.sh && chmod +x ins-vt.sh && screen -S v2ray ./ins-vt.sh
 #install L2TP
-wget https://linkkalian/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
-wget https://linkkalian/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://github.com/doraemon99-x/autoscript/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget https://github.com/doraemon99-x/autoscript/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 rm -f /root/ssh-vpn.sh
 rm -f /root/sstp.sh
